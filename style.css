@@ -158,3 +158,50 @@ body {
 section {
   padding: 20px;
 }
+
+.doacao-section {
+  background-color: #f0f0f0;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.doacao-section h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.doacao-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.doacao-box div {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 280px;
+}
+
+.qr-code {
+  max-width: 100%;
+  height: auto;
+  margin: 10px 0;
+}
+
+.btn-doar {
+  padding: 12px 24px;
+  background-color: #0070ba;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-doar:hover {
+  background-color: #005c99;
+}
