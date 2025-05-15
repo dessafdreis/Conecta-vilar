@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Adote um Atleta do Seu Bairro</title>
+  <link rel="stylesheet" href="painel.css">
+</head>
+<body>
+  <header>
+    <h1>Adote um Atleta do Seu Bairro</h1>
+    <p>Conheça nossos atletas e ajude a transformar o futuro deles!</p>
+  </header>
+
+  <main>
+    <section id="listaAtletasPublica">
+      <h2>Atletas do Projeto</h2>
+      <div id="cardsPublicos"></div>
+    </section>
+  </main>
+
+  <script>
+    const container = document.getElementById("cardsPublicos");
+    const atletas = JSON.parse(localStorage.getItem("atletas")) || [];
+
+    atletas.forEach((atleta) => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${atleta.imagem}" alt="${atleta.nome}">
+        <h3>${atleta.nome}</h3>
+        <p>${atleta.modalidades}</p>
+      `;
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>
