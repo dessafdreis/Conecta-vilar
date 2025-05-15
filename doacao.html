@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Formulário de Doação</title>
+  <style>
+    body { font-family: sans-serif; background: #f7f9fc; padding: 20px; }
+    form { background: white; padding: 20px; border-radius: 8px; max-width: 400px; margin: auto; }
+    input, button { width: 100%; padding: 10px; margin: 10px 0; border-radius: 6px; border: 1px solid #ccc; }
+    button { background-color: #1e90ff; color: white; border: none; cursor: pointer; }
+    button:hover { background-color: #0066cc; }
+    .msg { text-align: center; margin-top: 10px; }
+  </style>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init('SEU_USER_ID_AQUI');
+    })();
+
+    function enviarDoacao(e) {
+      e.preventDefault();
+
+      emailjs.sendForm('SEU_SERVICE_ID', 'SEU_TEMPLATE_ID', e.target)
+        .then(() => {
+          document.querySelector('.msg').textContent = 'Obrigado pela sua doação!';
+          e.target.reset();
+        }, (err) => {
+          document.querySelector('.msg').textContent = 'Erro ao enviar. Tente novamente.';
+          console.error('Erro:', err);
+        });
+    }
+  </script>
+</head>
+<body>
+
+  <h1>Doe para apoiar nossos atletas</h1>
+
+  <form onsubmit="enviarDoacao(event)">
+    <input type="text" name="nome" placeholder="Seu nome" required />
+    <input type="email" name="email" placeholder="Seu e-mail" required />
+    <input type="number" name="valor" placeholder="Valor da doação (R$)" min="1" required />
+    <button type="submit">Doar</button>
+  </form>
+
+  <div class="msg"></div>
+
+</body>
+</html>
