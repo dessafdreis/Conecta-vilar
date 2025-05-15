@@ -387,3 +387,19 @@ footer {
   text-align: center;
   padding: 20px;
 }
+h1, h2, h3 {
+  color: #0D47A1;
+  font-weight: 700;
+}
+
+p, span, li {
+  color: #333333;
+}
+a {
+  color: #1E90FF;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
