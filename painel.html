@@ -25,6 +25,37 @@
       <div id="cardsContainer"></div>
     </section>
   </main>
+<!-- Adicione esse botão na área do seu painel, por exemplo perto do título -->
+<button id="btnExportarPDF">Exportar lista em PDF</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  const { jsPDF } = window.jspdf;
+
+  document.getElementById("btnExportarPDF").addEventListener("click", () => {
+    const atletas = JSON.parse(localStorage.getItem("atletas")) || [];
+    if (atletas.length === 0) {
+      alert("Nenhum atleta cadastrado para exportar.");
+      return;
+    }
+
+    const doc = new jsPDF();
+    doc.setFontSize(18);
+    doc.text("Lista de Atletas - Adote um Atleta do Seu Bairro", 10, 20);
+
+    doc.setFontSize(12);
+    let y = 30;
+    atletas.forEach((atleta, index) => {
+      doc.text(`${index + 1}. Nome: ${atleta.nome}`, 10, y);
+      y += 7;
+      doc.text(`   Modalidades: ${atleta.modalidades}`, 10, y);
+      y += 10;
+      // Se precisar de mais dados, adicione aqui e aumente y
+    });
+
+    doc.save("lista_atletas.pdf");
+  });
+</script>
 
   <script>
     const form = document.getElementById("formAtleta");
