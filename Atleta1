@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Luiz Nunes - Adote um Atleta</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <section class="perfil-atleta">
+    <img src="../images/luiz-nunes.jpg" alt="Luiz Nunes" class="foto-atleta">
+    <h1>Luiz Nunes</h1>
+    <p><strong>Modalidade:</strong> Judô e Jiu-jitsu</p>
+    <p><strong>Idade:</strong> 15 anos</p>
+    <p><strong>Conquistas:</strong> Mais de 10 medalhas em torneios regionais e estaduais.</p>
+    <p><strong>Meta:</strong> Participar do Campeonato Brasileiro e se tornar faixa preta.</p>
+
+    <a href="#doar"><button class="btn-doar">Adotar Luiz Nunes</button></a>
+    <a href="../index.html" class="voltar-link">← Voltar</a>
+  </section>
+</body>
+</html>
