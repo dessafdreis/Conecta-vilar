@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel de Atletas - Conecta Vilar</title>
+  <link rel="stylesheet" href="painel.css">
+</head>
+<body>
+  <header>
+    <h1>Painel de Atletas</h1>
+  </header>
+
+  <main>
+    <form id="formAtleta">
+      <h2>Adicionar/Editar Atleta</h2>
+      <input type="hidden" id="idAtleta" />
+      <input type="text" id="nome" placeholder="Nome do Atleta" required>
+      <input type="text" id="modalidades" placeholder="Modalidades e conquistas" required>
+      <input type="url" id="imagem" placeholder="URL da imagem" required>
+      <button type="submit">Salvar Atleta</button>
+    </form>
+
+    <section id="listaAtletas">
+      <h2>Lista de Atletas</h2>
+      <div id="cardsContainer"></div>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("formAtleta");
+    const nome = document.getElementById("nome");
+    const modalidades = document.getElementById("modalidades");
+    const imagem = document.getElementById("imagem");
+    const idAtleta = document.getElementById("idAtleta");
+    const cardsContainer = document.getElementById("cardsContainer");
+
+    let atletas = JSON.parse(localStorage.getItem("atletas")) || [];
+
+    function salvarAtletas() {
+      localStorage.setItem("atletas", JSON.stringify(atletas));
+      exibirAtletas();
+      form.reset();
+      idAtleta.value = "";
+    }
+
+    function exibirAtletas() {
+      cardsContainer.innerHTML = "";
+      atletas.forEach((atleta, index) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${atleta.imagem}" alt="${atleta.nome}">
+          <h3>${atleta.nome}</h3>
+          <p>${atleta.modalidades}</p>
+          <button onclick="editarAtleta(${index})">Editar</button>
+          <button onclick="removerAtleta(${index})">Remover</button>
+        `;
+        cardsContainer.appendChild(card);
+      });
+    }
+
+    form.onsubmit = (e) => {
+      e.preventDefault();
+      const atleta = {
+        nome: nome.value,
+        modalidades: modalidades.value,
+        imagem: imagem.value
+      };
+      if (idAtleta.value === "") {
+        atletas.push(atleta);
+      } else {
+        atletas[parseInt(idAtleta.value)] = atleta;
+      }
+      salvarAtletas();
+    };
+
+    function editarAtleta(index) {
+      const atleta = atletas[index];
+      nome.value = atleta.nome;
+      modalidades.value = atleta.modalidades;
+      imagem.value = atleta.imagem;
+      idAtleta.value = index;
+    }
+
+    function removerAtleta(index) {
+      if (confirm("Tem certeza que deseja remover este atleta?")) {
+        atletas.splice(index, 1);
+        salvarAtletas();
+      }
+    }
+
+    exibirAtletas();
+  </script>
+</body>
+</html>
