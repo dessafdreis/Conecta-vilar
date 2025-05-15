@@ -7,3 +7,8 @@ document.getElementById("contato-form").addEventListener("submit", function(even
     alert("Mensagem enviada com sucesso! Entraremos em contato em breve.");
     this.reset();
 });
+
+function toggleMenu() {
+  const nav = document.getElementById('navLinks');
+  nav.classList.toggle('show');
+}
