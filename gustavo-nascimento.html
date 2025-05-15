@@ -1,1 +1,31 @@
+<section id="atletas" class="grid-atletas">
+  <a href="atletas/luiz-nunes.html" class="card-atleta">
+    <img src="images/luiz-nunes.jpg" alt="Luiz Nunes">
+    <h3>Luiz Nunes</h3>
+  </a>
+  <a href="atletas/gustavo-nascimento.html" class="card-atleta">
+    <img src="images/gustavo-nascimento.jpg" alt="Gustavo Nascimento">
+    <h3>Gustavo Nascimento</h3>
+  </a>
+  <!-- Adicione os outros cards -->
+</section>
 
+.grid-atletas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+}
+
+.card-atleta {
+  text-align: center;
+  width: 160px;
+  text-decoration: none;
+  color: black;
+}
+
+.card-atleta img {
+  width: 100%;
+  border-radius: 12px;
+}
